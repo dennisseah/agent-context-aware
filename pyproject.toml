@@ -1,0 +1,47 @@
+[project]
+name = "agent-content-aware"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "azure-identity>=1.20.0",
+    "lagom>=2.7.5",
+    "langchain-core>=0.3.37",
+    "langchain-openai>=0.3.6",
+    "python-dotenv>=1.0.1",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.1.0",
+    "pyright>=1.1.394",
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.25.3",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.9.7",
+]
+
+
+[tool.ruff]
+exclude = ["typings", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "TID"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+exclude = ["typings", ".venv", ".vscode", ".git"]
+
+[tool.coverage.run]
+omit = [
+    "*/__init__.py",
+    "agent_context_aware/hosting.py",
+    "agent_context_aware/protocols/*",
+    "agent_context_aware/main.py" 
+]
